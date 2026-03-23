@@ -1,0 +1,70 @@
+[INFO   ][2026-03-11 20:40:56][268224407007552] MPCC Server listening on port 8080
+[INFO   ][2026-03-11 20:40:56][268224407007552] Press Ctrl-C to shut down.
+[INFO   ][2026-03-11 20:41:02][268224407007552] New connection accepted from 127.0.0.1  (fd=5)
+[INFO   ][2026-03-11 20:41:02][268224401240416] ClientHandler::run() – new client from 127.0.0.1
+[INFO   ][2026-03-11 20:41:08][268224401240416] New user registered: Shiva from 127.0.0.1
+[INFO   ][2026-03-11 20:41:08][268224401240416] recv_loop started for user: Shiva
+[INFO   ][2026-03-11 20:41:29][268224407007552] New connection accepted from 127.0.0.1  (fd=6)
+[INFO   ][2026-03-11 20:41:29][268224392786272] ClientHandler::run() – new client from 127.0.0.1
+[INFO   ][2026-03-11 20:41:34][268224392786272] New user registered: Smitha from 127.0.0.1
+[INFO   ][2026-03-11 20:41:34][268224392786272] recv_loop started for user: Smitha
+[INFO   ][2026-03-11 20:41:55][268224407007552] New connection accepted from 127.0.0.1  (fd=7)
+[INFO   ][2026-03-11 20:41:55][268224384332128] ClientHandler::run() – new client from 127.0.0.1
+[INFO   ][2026-03-11 20:42:02][268224384332128] New user registered: Niya from 127.0.0.1
+[INFO   ][2026-03-11 20:42:02][268224384332128] recv_loop started for user: Niya
+[INFO   ][2026-03-11 20:42:21][268224384332128] User Niya sent EXIT.
+[INFO   ][2026-03-11 20:42:21][268224384332128] ClientHandler: client Niya disconnecting.
+[INFO   ][2026-03-11 20:42:25][268224392786272] User Smitha sent EXIT.
+[INFO   ][2026-03-11 20:42:25][268224392786272] ClientHandler: client Smitha disconnecting.
+[INFO   ][2026-03-11 20:42:28][268224401240416] User Shiva sent EXIT.
+[INFO   ][2026-03-11 20:42:28][268224401240416] ClientHandler: client Shiva disconnecting.
+[INFO   ][2026-03-11 20:42:38][268224407007552] accept_loop exited.
+[INFO   ][2026-03-11 20:42:38][268224407007552] Server::shutdown() – setting running=false
+[INFO   ][2026-03-11 20:42:38][268224407007552] Server shutdown complete.
+[INFO   ][2026-03-11 21:01:15][270710497722688] MPCC Server listening on port 8088
+[INFO   ][2026-03-11 21:01:15][270710497722688] Press Ctrl-C to shut down.
+[INFO   ][2026-03-11 21:01:25][270710497722688] accept_loop exited.
+[INFO   ][2026-03-11 21:01:25][270710497722688] Server::shutdown() – setting running=false
+[INFO   ][2026-03-11 21:01:25][270710497722688] Server shutdown complete.
+[INFO   ][2026-03-11 21:03:31][272827814768960] MPCC Server listening on port 9999
+[INFO   ][2026-03-11 21:03:31][272827814768960] Press Ctrl-C to shut down.
+[INFO   ][2026-03-11 21:03:36][272827814768960] accept_loop exited.
+[INFO   ][2026-03-11 21:03:36][272827814768960] Server::shutdown() – setting running=false
+[INFO   ][2026-03-11 21:03:36][272827814768960] Server shutdown complete.
+[INFO   ][2026-03-12 16:19:24][0x20b1b7080] MPCC Server listening on port 8080
+[INFO   ][2026-03-12 16:19:24][0x20b1b7080] Press Ctrl-C to shut down.
+[INFO   ][2026-03-12 16:19:46][0x20b1b7080] New connection accepted from 127.0.0.1  (fd=5)
+[INFO   ][2026-03-12 16:19:46][0x16d5bb000] ClientHandler::run() – new client from 127.0.0.1
+[INFO   ][2026-03-12 16:19:54][0x16d5bb000] User logged in: Shiva from 127.0.0.1
+[INFO   ][2026-03-12 16:19:54][0x16d5bb000] recv_loop started for user: Shiva
+[INFO   ][2026-03-12 16:37:39][0x202bdb100] MPCC Server listening on port 8080
+[INFO   ][2026-03-12 16:37:39][0x202bdb100] Press Ctrl-C to shut down.
+[INFO   ][2026-03-12 16:37:55][0x202bdb100] New connection accepted from 127.0.0.1  (fd=5)
+[INFO   ][2026-03-12 16:37:55][0x16d147000] ClientHandler::run() – new client from 127.0.0.1
+[INFO   ][2026-03-12 16:38:06][0x16d147000] User logged in: Shiva from 127.0.0.1
+[INFO   ][2026-03-12 16:38:06][0x16d147000] recv_loop started for user: Shiva
+[INFO   ][2026-03-12 16:41:28][0x202bdb100] New connection accepted from 127.0.0.1  (fd=6)
+[INFO   ][2026-03-12 16:41:28][0x16d1d3000] ClientHandler::run() – new client from 127.0.0.1
+[INFO   ][2026-03-12 16:41:34][0x16d1d3000] User logged in: Niya from 127.0.0.1
+[INFO   ][2026-03-12 16:41:34][0x16d1d3000] recv_loop started for user: Niya
+[INFO   ][2026-03-12 16:45:57][0x16d1d3000] User Niya sent EXIT.
+[INFO   ][2026-03-12 16:45:57][0x16d1d3000] ClientHandler: client Niya disconnecting.
+[INFO   ][2026-03-12 16:46:00][0x16d147000] User Shiva sent EXIT.
+[INFO   ][2026-03-12 16:46:00][0x16d147000] ClientHandler: client Shiva disconnecting.
+[INFO   ][2026-03-12 16:46:06][0x202bdb100] accept_loop exited.
+[INFO   ][2026-03-12 16:46:06][0x202bdb100] Server::shutdown() – setting running=false
+[INFO   ][2026-03-12 16:46:06][0x202bdb100] Server shutdown complete.
+[INFO   ][2026-03-13 09:19:14][0x202bdb100] MPCC Server listening on port 8080
+[INFO   ][2026-03-13 09:19:14][0x202bdb100] Press Ctrl-C to shut down.
+[INFO   ][2026-03-13 09:19:21][0x202bdb100] New connection accepted from 127.0.0.1  (fd=5)
+[INFO   ][2026-03-13 09:19:21][0x16d8af000] ClientHandler::run() – new client from 127.0.0.1
+[INFO   ][2026-03-13 09:19:27][0x16d8af000] User logged in: Shiva from 127.0.0.1
+[INFO   ][2026-03-13 09:19:27][0x16d8af000] recv_loop started for user: Shiva
+[INFO   ][2026-03-13 09:20:15][0x202bdb100] New connection accepted from 127.0.0.1  (fd=6)
+[INFO   ][2026-03-13 09:20:15][0x16d93b000] ClientHandler::run() – new client from 127.0.0.1
+[INFO   ][2026-03-13 09:20:21][0x16d93b000] User logged in: Niya from 127.0.0.1
+[INFO   ][2026-03-13 09:20:21][0x16d93b000] recv_loop started for user: Niya
+[INFO   ][2026-03-13 09:21:32][0x16d93b000] User Niya sent EXIT.
+[INFO   ][2026-03-13 09:21:32][0x16d93b000] ClientHandler: client Niya disconnecting.
+[INFO   ][2026-03-13 09:21:40][0x16d8af000] User Shiva sent EXIT.
+[INFO   ][2026-03-13 09:21:40][0x16d8af000] ClientHandler: client Shiva disconnecting.
