@@ -1,128 +1,142 @@
-MPCC (Multi‑Party Chat Conference) is a multi‑client chat system built using TCP sockets.
-It supports real‑time messaging between multiple users, with each user handled by a dedicated thread on the server.
-The system consists of:
 
-A Server → manages client connections, registration/login, message routing, and disconnection.
-A Client → connects to the server, registers/logs in, sends/receives messages, and can exit gracefully.
+MPCC (Multi‑Party Chat Conference)
+MPCC is a lightweight, multi‑client chat system implemented in C++ using TCP sockets and a thread‑per‑client server architecture. It enables real‑time message exchange between multiple connected users over a simple, text‑based protocol.
+This project demonstrates practical socket programming, multithreading, and robust connection lifecycle handling, including graceful shutdowns and client reconnections.
 
-The project uses a simple text‑based protocol over sockets.
 
-✅ Key Features
+ Features
 Server
 
-Accepts multiple clients via a TCP listener.
-Spawns a ClientHandler thread for each connection. [capgemini-...epoint.com]
-Handles:
-
-User registration or login
-Message receive loops
-Exit commands
-
-
-Gracefully shuts down on Ctrl+C.
-Supports multiple restart cycles (verified from logs).
-
+TCP listener supporting multiple simultaneous client connections
+Dedicated ClientHandler thread per client
+User registration and login support
+Broadcast messaging to all connected users
+Graceful handling of client EXIT commands
+Clean shutdown on Ctrl+C (SIGINT)
+Stable across multiple restart cycles (verified via logs)
 Client
 
-Connects to the server on a specified port.
-Registers/logs in with a username.
-Enters a receive loop for incoming messages.
-Can send EXIT to disconnect cleanly.
-Successfully reconnects after server restarts. [capgemini-...epoint.com]
+Connects to server using configurable host and port
+User registration / login via text‑based commands
+Asynchronous receive loop for incoming messages
+Clean disconnection using EXIT
+Reliable reconnection after server restarts
 
 
-🗂️ Project Structure (Typical Layout)
+ Architecture Overview
++-------------------+            +-------------------+
+|    MPCC Client    | <——TCP——>  |    MPCC Server    |
+|-------------------|            |-------------------|
+| • Connect/Login   |            | • Accept clients  |
+| • Send messages   |            | • Spawn threads   |
+| • Receive loop    |            | • Route messages  |
+| • EXIT handling   |            | • Handle EXIT     |
++-------------------+            +-------------------+
+
+
+
+The server listens on a specified port and accepts incoming TCP connections.
+Each client connection is handled by a dedicated ClientHandler thread.
+Messages from one client are broadcast to all other connected clients.
+A simple text‑based protocol defines all interactions.
+
+
+ Project Structure
 /mpcc
 │── server/
-│   ├── mpcc_server.cpp
-│   ├── client_handler.cpp
+│   ├── mpcc_server.cpp      # Server entry point
+│   ├── client_handler.cpp   # Per‑client thread logic
 │   ├── client_handler.h
 │   └── ...
 │
 │── client/
-│   ├── mpcc_client.cpp
+│   ├── mpcc_client.cpp      # Client implementation
 │   └── ...
 │
 │── logs/
-│   ├── mpcc_server.log
-│   └── mpcc_client.log
+│   ├── mpcc_server.log      # Server runtime logs
+│   └── mpcc_client.log      # Client runtime logs
 │
 │── README.md
 └── Makefile / build scripts
 
 
-⚙️ How It Works
-1. Server Startup
-Server begins listening on a port (e.g., 8080, 8088, 9999).
-Seen in logs:
-MPCC Server listening on port 8080
-Press Ctrl-C to shut down.
-```[1](https://capgemini-my.sharepoint.com/personal/vijayan_b_vijayan_capgemini_com/Documents/Microsoft%20Copilot%20Chat%20Files/mpcc_client.log)
 
----
 
-### **2. Client Connection**
-Clients connect from `127.0.0.1` as shown consistently:  
-
-Connected to 127.0.0.1:8080
-C++Show more lines
-New connection accepted from 127.0.0.1
-ClientHandler::run() – new client
-[1](https://capgemini-my.sharepoint.com/personal/vijayan_b_vijayan_capgemini_com/Documents/Microsoft%20Copilot%20Chat%20Files/mpcc_client.log)
-
----
-
-### **3. User Registration / Login**
-Server detects user registration/login:  
-
-New user registered: Shiva
-User logged in: Shiva
-C++Show more lines
-recv_loop started for user: Shiva
-[1](https://capgemini-my.sharepoint.com/personal/vijayan_b_vijayan_capgemini_com/Documents/Microsoft%20Copilot%20Chat%20Files/mpcc_client.log)
-
----
-
-### **5. Graceful Exit**
-When a client sends `EXIT`, server logs:  
-
-User Niya sent EXIT.
-ClientHandler: client Niya disconnecting.
-C++Show more lines
-Server::shutdown() – setting running=false
-Server shutdown complete.
-C++Show more lines
-Client
-Shellg++ mpcc_client.cpp -o client./client 127.0.0.1 8080Show more lines
-
-📡 Protocol
+ Communication Protocol
 Client → Server Commands
 
-CommandDescriptionREGISTER <name>First‑time user registrationLOGIN <name>User loginMSG <text>Broadcast message to other usersEXITDisconnect gracefully
+Command	Description
+REGISTER <name>	Register as a new user
+LOGIN <name>	Login as an existing user
+MSG <text>	Broadcast a message to all users
+EXIT	Disconnect gracefully
+
 Server → Client Messages
 
-TypeDescriptionSystem messagesLogin success, welcome, etc.Broadcast messagesMessages from other connected usersError messagesInvalid command / format
+System notifications (login success, welcome messages)
+Broadcast messages from other users
+Error messages for invalid commands or formats
 
-✅ Verified Behavior (Based on Logs)
-The logs you provided confirm:
 
-Multiple clients connect successfully.
-Server handles each with its own thread.
-Registration and login are functioning.
-EXIT command works flawlessly.
-Server is stable across multiple restarts.
-No crashes, no socket errors, no unexpected disconnects.
- [capgemini-...epoint.com], [capgemini-...epoint.com]
+ Build & Run
+Prerequisites
+
+GCC / G++ with C++11 or later
+POSIX‑compatible OS (Linux / macOS)
+Compile
+# Build server
+g++ server/mpcc_server.cpp server/client_handler.cpp -o mpcc_server -pthread
+
+# Build client
+g++ client/mpcc_client.cpp -o mpcc_client
+
+
+Run Server
+./mpcc_server <port>
+# Example
+./mpcc_server 8080
+
+
+Run Client
+./mpcc_client <server_ip> <port>
+# Example
+./mpcc_client 127.0.0.1 8080
+
+
+
+
+ Verified Behavior
+Based on runtime logs and testing:
+
+Multiple clients connect successfully from 127.0.0.1
+Each client is managed by a separate server thread
+Registration and login flows work as expected
+Messages are broadcast reliably in real time
+EXIT command triggers clean client disconnection
+Server shuts down gracefully and restarts without issues
+Clients reconnect successfully after server restarts
 
 
 🔧 Future Enhancements
-You can extend MPCC with:
+Potential extensions to the MPCC system include:
 
 Chat rooms / channels
-Private messaging
-File sharing
-WebSocket layer
-GUI client
-Authentication with passwords
-Encrypted transport (TLS)
-Persistent chat history
+Private (one‑to‑one) messaging
+Password‑based authentication
+TLS‑encrypted communication
+Persistent chat history (database‑backed)
+File transfer support
+GUI or Web‑based client (WebSockets)
+
+
+ License
+This project is intended for educational and learning purposes. You are free to modify and extend it as needed.
+
+
+ Author
+Vijayan
+Software Engineer
+
+
+MPCC demonstrates a clean, reliable, and extensible foundation for multi‑client networked applications using C++ sockets and threads.
